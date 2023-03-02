@@ -64,6 +64,18 @@ app.delete('/:id', async (req, res) => {
   })
 })
 
+
+app.get("/books/:id", async (req, res) => {
+  try {
+    const id = req.params.id
+    const data = await Docente.findById(id)
+    res.send(data)
+  } catch (err) {
+    res.status(402)
+    res.send("ERROR_GET_BOOK")
+  }
+})
+
 //Escuchamos nuestro servidor creado
 app.listen(3001, () => {
   console.log('listening on 3001')
